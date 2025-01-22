@@ -157,11 +157,21 @@
                 const response = await fetch(url, options);
                 const responseText = await response.text();
 
-                responseDisplay.textContent = `
+                const headers = [...response.headers.entries()]
+                    .map(([key, value]) => `${key}: ${value}`)
+                    .join('\n');
+
+                const formattedResponse = `
 Status: ${response.status} ${response.statusText}
-Headers: ${JSON.stringify([...response.headers.entries()], null, 2)}
-Body: ${responseText}
+
+Headers:
+${headers}
+
+Body:
+${responseText}
                 `;
+
+                responseDisplay.textContent = formattedResponse.trim();
             } catch (error) {
                 responseDisplay.textContent = `Request failed: ${error.message}`;
             }
