@@ -67,14 +67,15 @@
         }
 
         #responseDisplay {
-            margin-top: 20px;
             background: #f1f1f1;
             border: 1px solid #ddd;
             padding: 15px;
             border-radius: 4px;
-            white-space: pre-wrap; /* Preserve formatting */
+            white-space: pre-wrap; /* Preserve line breaks, but wrap text */
             font-family: "Courier New", Courier, monospace;
             font-size: 0.9rem;
+            overflow-wrap: break-word;  /* Ensure long words break correctly */
+            word-wrap: break-word;      /* Legacy support for older browsers */
         }
 
         footer {
